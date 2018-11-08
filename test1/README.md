@@ -47,14 +47,24 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 ```
 - 第二步：新用户new_user连接到pdborcl，创建表mytable和视图myview，插入数据，最后将myview的SELECT对象权限授予hr用户。
 ```SQL
-$ sqlplus new_usr/123@pdborcl
+[oracle@deep02 ~]$ sqlplus yym1/123@pdborcl
+
+SQL*Plus: Release 12.1.0.2.0 Production on 星期四 11月 8 17:15:47 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+连接到:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
 SQL> show user;
-USER 为 "SYSTEM"
+USER 为 "YYM1"
 SQL> CREATE TABLE mytable (id number,name varchar(50));
 
 表已创建。
 
-SQL> INSERT INTO mytable(id,name)VALUES(1,'zhang');
+SQL> INSERT INTO mytable(id,name)VALUES（1，'zhang');
 
 已创建 1 行。
 
@@ -78,6 +88,8 @@ SQL> GRANT SELECT ON myview TO hr;
 授权成功。
 
 SQL> exit
+从 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options 断开
 
 ```
 
