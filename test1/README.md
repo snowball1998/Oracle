@@ -122,9 +122,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 - 第四步：查看数据库的使用情况
 ```SQL
 [oracle@deep02 ~]$ sqlplus system/123@pdborcl  
-SQL*Plus: Release 12.1.0.2.0 Production on 星期三 10月 24 09:16:27 2018  
+
+SQL*Plus: Release 12.1.0.2.0 Production on 星期四 11月 8 17:24:57 2018 
+
 Copyright (c) 1982, 2014, Oracle.  All rights reserved.  
-上次成功登录时间: 星期三 10月 24 2018 09:14:53 +08:00  
+
+上次成功登录时间: 星期四 11月 08 2018 17:22:24 +08:00 
 连接到:
 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
 With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options  
@@ -155,10 +158,10 @@ SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
     大小MB     剩余MB     使用MB    使用率%
 ---------- ---------- ---------- ----------
 SYSAUX
-       630         39        591      93.81
+       630         37        591      93.81
 
 USERS
-         5        1.5        3.5         70
+         5        1.3        3.5         73
 
 SYSTEM
        270     3.5625   266.4375      98.68
@@ -169,7 +172,7 @@ SYSTEM
     大小MB     剩余MB     使用MB    使用率%
 ---------- ---------- ---------- ----------
 EXAMPLE
-  1281.875      62.25   1219.625      95.14  
+  1281.875      61.79   1220.085      95.18  
   
   
 ```
