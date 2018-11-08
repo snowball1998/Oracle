@@ -1,40 +1,48 @@
 # Oracle实验二： 用户管理 - 掌握管理角色、权根、用户的能力，并在用户之间共享对象
 ## 实验步骤：
-- 第一步：以system登录到pdborcl，创建角色con_res_view和用户new_user，并授权和分配空间：
+- 第一步：以system登录到pdborcl，创建角色yym和用户yym1，并授权和分配空间：
 ```SQL
+yym@DESKTOP-1R80DSI MINGW32 ~/Desktop
+$ ssh oracle@202.115.82.8
+oracle@202.115.82.8's password:
 [oracle@deep02 ~]$ sqlplus system/123@pdborcl
 
-SQL*Plus: Release 12.1.0.2.0 Production on 星期三 10月 24 08:55:20 2018
+SQL*Plus: Release 12.1.0.2.0 Production on 星期四 11月 8 17:00:43 2018
 
 Copyright (c) 1982, 2014, Oracle.  All rights reserved.
 
-上次成功登录时间: 星期三 10月 24 2018 08:55:12 +08:00
+上次成功登录时间: 星期四 11月 08 2018 16:58:00 +08:00
 
 连接到:
 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
 With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
 
-SQL> CREATE ROLE con_wwh_view;
+SQL> CREATE ROLE yym;
 
 角色已创建。
 
-SQL>  GRANT connect,resource,CREATE VIEW TO con_wwh_view;
+SQL> Role created.
+SP2-0734: 未知的命令开头 "Role creat..." - 忽略了剩余的行。
+SQL> GRANT connect,resource,CREATE VIEW TO yym;
 
 授权成功。
 
-SQL> CREATE USER new_usr IDENTIFIED BY 123 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
+SQL> CREATE USER yym1 IDENTIFIED BY 123 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
 
 用户已创建。
 
-SQL> ALTER USER new_usr QUOTA 50M ON users;
+SQL> ALTER USER yym1 QUOTA 50M ON users;
 
 用户已更改。
 
-SQL> GRANT con_wwh_view TO new_usr;
+SQL> GRANT yym TO yym1;
 
 授权成功。
 
 SQL> exit
+从 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options 断开
+
 
 ```
 - 第二步：新用户new_user连接到pdborcl，创建表mytable和视图myview，插入数据，最后将myview的SELECT对象权限授予hr用户。
