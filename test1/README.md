@@ -119,3 +119,4 @@ SQL> exit
 With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options 断开
 
 ```
+- 第四步：查看数据库的使用情况
