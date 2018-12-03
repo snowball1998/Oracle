@@ -137,7 +137,7 @@ order_details
 
 二、第2步：给用户进行分配可查询的权限： 
 ---------
-![image](https://github.com/snowball1998/Oracle/blob/master/test3/1.jpg) 
+![image](https://github.com/snowball1998/Oracle/blob/master/test3/1.png) 
 
 三、第3步：插入一万条数据语句及联合查询语句：  
 --------
@@ -188,7 +188,7 @@ order_details
     对查询语句，进行分析语句的执行计划：  
 --------
 ##### 联合查询语句执行计划：
-![image](https://github.com/snowball1998/Oracle/blob/master/test3/2.jpg)       
+![image](https://github.com/snowball1998/Oracle/blob/master/test3/2.png)       
 
 四、分区与不分区的对比分析
 --------
