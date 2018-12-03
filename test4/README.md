@@ -736,11 +736,11 @@
     
 ##### （4）查询数据语句。
 
-###### 1.查询某个员工的信息sql语句及其结果如下图2-4-1所示。
+###### 1.查询某个员工的信息sql语句。
      SELECT * FROM EMPLOYEES WHERE employee_ID = 1;
    ![image](https://github.com/snowball1998/Oracle/blob/master/test4/1.png)  
 
-###### 2.递归查询某个员工及其所有下属，子下属员工SQL语句及其结果如下图2-4-2所示。
+###### 2.递归查询某个员工及其所有下属，子下属员工SQL语句。
      WITH A (EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID) AS
      (SELECT EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID
      FROM employees WHERE employee_ID = 1
@@ -750,36 +750,24 @@
      SELECT * FROM A;
   ![image](https://github.com/snowball1998/Oracle/blob/master/test4/2.png)  
  
-###### 3.查询订单表SQL语句及其结果如下图2-4-3所示，并且包括订单的订单应收货款: Trade_Receivable= sum(订单详单表.ProductNum*订单详单表.ProductPrice)- Discount。
-    SELECT * FROM orders WHERE order_id=15041;
-    SELECT * FROM order_details WHERE order_id=15041;
- ![image](https://github.com/snowball1998/Oracle/blob/master/test4/3.png)  
- 
-###### 4.查询订单详表SQL语句及其结果如下图2-4-4所示，要求显示订单的客户名称和客户电话，产品类型用汉字描述。
+###### 3.查询订单详表SQL语句（要求显示订单的客户名称和客户电话，产品类型用汉字描述）。
      SELECT CUSTOMER_NAME as name,CUSTOMER_TEL as tel,PRODUCT_NAME as kind FROM order_details,orders WHERE order_details.order_id=orders.order_id And orders.order_id=15041;
   ![image](https://github.com/snowball1998/Oracle/blob/master/test4/4.png)     
      
-###### 5.查询出所有空订单SQL语句及其结果如下图2-4-5锁死，即没有订单详单的订单。
+###### 4.查询出所有空订单SQL语句。
     SELECT * FROM orders WHERE order_id NOT IN (SELECT order_id FROM order_details);
-    或者
-    SELECT orders.* FROM orders LEFT JOIN order_details ON orders.order_id = order_details.order_id WHERE order_details.order_id is NULL;
-![image](https://github.com/snowball1998/Oracle/blob/master/test4/5.png)  
     
-###### 6.查询部门表SQL语句及其结果如下图2-4-6所示，同时显示部门的负责人姓名。
-    SELECT departments.department_id,departments.department_name,employees.name FROM departments,employees WHERE employees.manager_id = departments.department_id;
-![image](https://github.com/snowball1998/Oracle/blob/master/test4/6.png)  
-
-###### 7.查询部门表SQL语句，统计每个部门的销售总金额。    
-    SELECT departments.department_name as 部门名称,SUM(ORDERS.trade_receivable) as 总金额 FROM departments,employees,orders
+  ![image](https://github.com/snowball1998/Oracle/blob/master/test4/5.png)  
+###### 5.查询订单表SQL语句。
+    SELECT * FROM orders WHERE order_id=15041;
+    SELECT * FROM order_details WHERE order_id=15041;
+ ![image](https://github.com/snowball1998/Oracle/blob/master/test4/3.png)  
+   
+###### 6.查询部门表SQL语句，统计每个部门的销售总金额。    
+    SELECT departments.department_name as 部门,SUM(ORDERS.trade_receivable) as 总金额 FROM departments,employees,orders
     WHERE departments.department_id=employees.department_id AND employees.employee_id=orders.employee_id group by departments.department_name;
 ![image](https://github.com/snowball1998/Oracle/blob/master/test4/7.png)  
     
-    
-
-三、实验总结分析
---------
-- 本次实验学会了如何应用序列以及触发器。
-- 加深了对于分区表的理解。
-- 对视图有了一定的了解。
-- 并加深了对于SQL语句的理解。
-- 这次实验难度颇大，SQL语句很多，但是做完实验后，以前有些不懂的地方也都能懂了，这次实验的收获还是蛮大的。
+###### 7.查询部门表SQL语句。
+    SELECT departments.department_id,departments.department_name,employees.name FROM departments,employees WHERE employees.manager_id = departments.department_id;
+![image](https://github.com/snowball1998/Oracle/blob/master/test4/6.png)  
