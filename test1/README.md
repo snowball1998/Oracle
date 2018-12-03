@@ -29,7 +29,7 @@
 ![image](https://github.com/snowball1998/Oracle/blob/master/test1/2.png)
 ### 查询1执行计划：
 	查询1的SQL语句是直接从hr.departments d和hr.employees e两个表中查询出"部门总人数"和"平均工资",
-	然后通过where子句进行约束限制,最后通department_name过department_name来排列显示。
+	然后通过where子句进行约束限制,最后通过department_name来排列显示。
 ### 查询2执行计划：
 	查询2的SQL语句是直接从hr.departments d和hr.employees e两个表中查询出"部门总人数"和"平均工资",
 	然后通过where子句进行约束限制然后又通过department_name来排列显示,最后通过having in 来过滤显示内容。
